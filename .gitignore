@@ -1,0 +1,7 @@
+.idea/
+.metadata/
+snips/
+/Nest_Day1_06022023/bin/
+*.classpath
+*.project
+*.settings/
