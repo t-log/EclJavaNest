@@ -48,57 +48,26 @@ public class AccountUtility {
 					if(existFlag != true) {
 						System.out.println("Invalid account");
 					}
-					
 				    break;
 			  	}
 			  case 3:
 			  	{	
-			  		boolean existFlag = false;
+
 			  		System.out.println("Enter account number:");
 					String accountNumber = scanner.next().toUpperCase();
 					System.out.println("Enter amount to be deposited:");
 					double amountDeposited = scanner.nextDouble();
-					for (Account account : accountsList){
-				         if (account.getAccountNo().equals(accountNumber)){
-				        	 double currentBalance = account.getBalance();
-				        	 account.setBalance(currentBalance+amountDeposited);
-				        	 System.out.println("Amount Deposited");
-				        	 existFlag = true;
-				        	 break;
-				         }
-					}
-					if(existFlag != true) {
-						System.out.println("Invalid account");
-					}
-					
+					AccountService.depositAmount(accountNumber, amountDeposited, accountsList);
 					break;
 			  	}
 				
 			  case 4:
 			  {		
-				  	boolean existFlag = false;
 			  		System.out.println("Enter account number:");
 			  		String accountNumber = scanner.next().toUpperCase();
 			  		System.out.println("Enter amount to be Withdrawn:");
 					double amountWithdrawn = scanner.nextDouble();
-					for (Account account : accountsList){
-				         if (account.getAccountNo().equals(accountNumber)){
-				        	 existFlag = true;
-				        	 double currentBalance = account.getBalance();
-				        	 if(currentBalance>amountWithdrawn) {
-				        		 account.setBalance(currentBalance-amountWithdrawn);
-				        		 System.out.println("Withdrawal Successfull");
-				        	 }
-				        	 else {
-				        		 System.out.println("Insufficient Balance");
-				        	 }
-				        	 break;
-				         }
-					}
-					if(existFlag != true) {
-						System.out.println("Invalid account");
-					}
-					
+					AccountService.withdrawAmount(accountNumber, amountWithdrawn, accountsList);
 					break;
 			  	}
 				
