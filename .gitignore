@@ -5,3 +5,5 @@ snips/
 *.classpath
 *.project
 *.settings/
+**bin/
+**lib/
