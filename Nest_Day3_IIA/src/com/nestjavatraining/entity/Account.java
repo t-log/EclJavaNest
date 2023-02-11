@@ -2,6 +2,14 @@ package com.nestjavatraining.entity;
 
 public class Account {
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Account [accountCode=" + accountCode + ", accountName=" + accountName + ", openingDate=" + openingDate
+				+ ", expiryDate=" + expiryDate + "]";
+	}
+
 	private String accountCode;
 	private String accountName;
 	private String openingDate;

@@ -2,6 +2,13 @@ package com.nestjavatraining.entity;
 
 public abstract class SavingsAccount extends Account {
 	
+	
+	@Override
+	public String toString() {
+		
+		return super.toString()+"\n"+"SavingsAccount [accountBalance=" + accountBalance + "]";
+	}
+
 	private double accountBalance;
 
 	public double getAccountBalance() {

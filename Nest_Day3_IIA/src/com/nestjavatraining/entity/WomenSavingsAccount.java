@@ -2,6 +2,11 @@ package com.nestjavatraining.entity;
 
 public class WomenSavingsAccount extends SavingsAccount {
 	
+	@Override
+	public String toString() {
+		return super.toString()+"\n"+"WomenSavingsAccount [freeLimit=" + freeLimit + "]";
+	}
+
 	private int freeLimit;
 
 
