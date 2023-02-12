@@ -29,19 +29,7 @@ public class BankUtility {
 			System.out.println("1.Create Account 2.Deposit Amount 3.Withdraw Amount 4.Display Accounts 5.Exit");
 			int choice = scanner.nextInt();
 			
-			switch(choice) {
-			
-//			  case 1:
-//				  savingsAccount = savingsAccountImpl.createAccount(choice);
-//				  System.out.println(savingsAccount);
-//				  break;
-//			  case 2: 
-//				  savingsAccount = savingsAccountImpl.createAccount(choice);
-//				  System.out.println(savingsAccount);
-//				  break;
-//			  default : 
-//				  System.out.println("Invalid choice");
-			
+			switch(choice) {			
 			case 1:
 				
 				  System.out.println("Enter account type (1.Womens Savings Account 2.Savings Max Account)");

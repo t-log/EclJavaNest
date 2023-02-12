@@ -29,22 +29,27 @@ public class SavingsAccountImpl implements AccountService {
 
 	@Override
 	public void depositAmount(String accountNumber,double depositAmount,ArrayList<SavingsAccount> accountsList) {
+		boolean existFlag = false;
 		for (SavingsAccount account : accountsList){
 	         if (account.getAccountCode().equals(accountNumber)){
 	        	 account.setAccountBalance(depositAmount);
+	        	 existFlag = true;
 	        	 System.out.println("Amount deposit successfull");
 	         }
-	         else {
-	        	 System.out.println("Invalid account!");
-	         }
+		}
+		if(!existFlag) {
+			System.out.println("Invalid Account");
 		}
 
 	}
 
 	@Override
 	public void withdrawAmount(String accountNumber,double withdrawAmount,ArrayList<SavingsAccount> accountsList) {
+		boolean existFlag = false;
 		for (SavingsAccount account : accountsList){
 	         if (account.getAccountCode().equals(accountNumber)){
+	        	 existFlag = true;
+	        	 
 	        	 double currentAccountBalance = account.getAccountBalance();
 	        	 if(currentAccountBalance>withdrawAmount) {
 	        		 account.setAccountBalance(currentAccountBalance-withdrawAmount);
@@ -55,9 +60,10 @@ public class SavingsAccountImpl implements AccountService {
 	        	 }
 	        	 
 	         }
-	         else {
-	        	 System.out.println("Invalid account!");
+	         if(!existFlag) {
+	        	 System.out.println("Invalid Account");
 	         }
+	         
 		}
 
 	}
