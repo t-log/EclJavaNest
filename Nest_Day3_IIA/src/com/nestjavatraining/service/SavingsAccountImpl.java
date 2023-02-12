@@ -1,36 +1,73 @@
 package com.nestjavatraining.service;
 
+import java.util.ArrayList;
+
 import com.nestjavatraining.entity.SavingsAccount;
 import com.nestjavatraining.entity.SavingsMaxAccount;
 import com.nestjavatraining.entity.WomenSavingsAccount;
 
 public class SavingsAccountImpl implements AccountService {
+	
+	private static int womensSavingsAccountIncrementer = 100;
+	private static int savingsMaxAccountIncrementer = 100;
+	SavingsAccount savingsAccount = null;
 
 	@Override
 	public SavingsAccount createAccount(int choice) {
-		SavingsAccount savingsAccount = null;
-		if(choice == 1)
-		{
-		savingsAccount = new WomenSavingsAccount("WSA001", "Women Savings Account","Feb 10 2023","",1000,3);
+		
+		if(choice == 1){
+		savingsAccount = new WomenSavingsAccount("WSA"+Integer.toString(womensSavingsAccountIncrementer), "Women Savings Account","10.02.2000","10.02.2030",0.0,3);
+		womensSavingsAccountIncrementer++;
 		}
-		else if(choice == 2)
-		{
-        savingsAccount = new SavingsMaxAccount("SMA001", "Savings Max Account","Jan 10 2023","",2000);
+		else if(choice == 2){
+        savingsAccount = new SavingsMaxAccount("SMA"+Integer.toString(savingsMaxAccountIncrementer), "Savings Max Account  ","10.02.2010","02.02.2025",0.0);
+        savingsMaxAccountIncrementer++;
 		}
 		return savingsAccount;
 
 	}
 
 	@Override
-	public void depositAmount() {
-		
+	public void depositAmount(String accountNumber,double depositAmount,ArrayList<SavingsAccount> accountsList) {
+		for (SavingsAccount account : accountsList){
+	         if (account.getAccountCode().equals(accountNumber)){
+	        	 account.setAccountBalance(depositAmount);
+	        	 System.out.println("Amount deposit successfull");
+	         }
+	         else {
+	        	 System.out.println("Invalid account!");
+	         }
+		}
 
 	}
 
 	@Override
-	public void withdrawAmount() {
-		
+	public void withdrawAmount(String accountNumber,double withdrawAmount,ArrayList<SavingsAccount> accountsList) {
+		for (SavingsAccount account : accountsList){
+	         if (account.getAccountCode().equals(accountNumber)){
+	        	 double currentAccountBalance = account.getAccountBalance();
+	        	 if(currentAccountBalance>withdrawAmount) {
+	        		 account.setAccountBalance(currentAccountBalance-withdrawAmount);
+	        		 System.out.println("Withdrawal successfull");
+	        	 }
+	        	 else {
+	        		 System.out.println("Insufficient Balance!");
+	        	 }
+	        	 
+	         }
+	         else {
+	        	 System.out.println("Invalid account!");
+	         }
+		}
 
+	}
+	
+	public void displayAllAccount(ArrayList<SavingsAccount> accountsList) {
+		int counter = 1;
+		for (SavingsAccount account : accountsList){
+	         System.out.println(Integer.toString(counter) +'\t'+ account);
+	         counter++;
+		}
 	}
 
 }

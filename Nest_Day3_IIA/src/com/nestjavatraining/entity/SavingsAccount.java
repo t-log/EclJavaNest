@@ -6,7 +6,9 @@ public abstract class SavingsAccount extends Account {
 	@Override
 	public String toString() {
 		
-		return super.toString()+"\n"+"SavingsAccount [accountBalance=" + accountBalance + "]";
+//		return super.toString()+"\n"+"SavingsAccount [accountBalance=" + accountBalance + "]";
+		String forTableFormat = Double.toString(accountBalance);
+		return super.toString() +'\t'+ forTableFormat;
 	}
 
 	private double accountBalance;

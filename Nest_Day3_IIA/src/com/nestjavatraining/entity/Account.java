@@ -6,8 +6,10 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return "Account [accountCode=" + accountCode + ", accountName=" + accountName + ", openingDate=" + openingDate
-				+ ", expiryDate=" + expiryDate + "]";
+//		return "Account [accountCode=" + accountCode + ", accountName=" + accountName + ", openingDate=" + openingDate
+//				+ ", expiryDate=" + expiryDate + "]";
+		String forTableFormat = accountCode +'\t'+"    "+ accountName +"   "+ openingDate +'\t'+" "+ expiryDate;
+		return forTableFormat;
 	}
 
 	private String accountCode;
@@ -15,11 +17,13 @@ public class Account {
 	private String openingDate;
 	private String expiryDate;
 	
+	
 	public Account(String accountCode, String accountName, String openingDate, String expiryDate) {
 		this.accountCode = accountCode;
 		this.accountName = accountName;
 		this.openingDate = openingDate;
 		this.expiryDate = expiryDate;
+		
 	}
 
 	public String getAccountCode() {
@@ -53,6 +57,10 @@ public class Account {
 	public void setExpiryDate(String expiryDate) {
 		this.expiryDate = expiryDate;
 	}
+
+	
+	
+	
 	
 
 	

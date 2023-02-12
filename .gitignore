@@ -7,3 +7,5 @@ snips/
 *.settings/
 **bin/
 **lib/
+reference/
+openJDK/

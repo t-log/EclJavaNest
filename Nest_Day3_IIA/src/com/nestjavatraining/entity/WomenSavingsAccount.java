@@ -4,7 +4,9 @@ public class WomenSavingsAccount extends SavingsAccount {
 	
 	@Override
 	public String toString() {
-		return super.toString()+"\n"+"WomenSavingsAccount [freeLimit=" + freeLimit + "]";
+//		return super.toString()+"\n"+"WomenSavingsAccount [freeLimit=" + freeLimit + "]";
+		String forTableFormat = Integer.toString(freeLimit);
+		return super.toString() +"      "+ forTableFormat;
 	}
 
 	private int freeLimit;
