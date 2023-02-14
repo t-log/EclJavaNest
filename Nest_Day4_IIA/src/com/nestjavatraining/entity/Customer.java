@@ -1,18 +1,35 @@
 package com.nestjavatraining.entity;
 
+import java.util.ArrayList;
+
+
 public class Customer {
 	
 	private String customerCode;
 	private String customerName;
 	
-	private SavingsAccount savingsAccount;
+	private Account account;
+	
+	private ArrayList<Account> accountsList = new ArrayList<>();
+	
+	
 
-	public Customer(String customerCode, String customerName, SavingsAccount savingsAccount) {
+	@Override
+	public String toString() {
+		return customerName +"       "+ account;
+	}
+
+	public Customer(String customerCode, String customerName,Account account) {
 		
 		this.customerCode = customerCode;
 		this.customerName = customerName;
-		this.savingsAccount = savingsAccount;
+		this.account = account;
 	}
+
+	public ArrayList<Account> getAccountslist() {
+		return accountsList;
+	}
+
 
 	public String getCustomerCode() {
 		return customerCode;
@@ -30,8 +47,8 @@ public class Customer {
 		this.customerName = customerName;
 	}
 
-	public SavingsAccount getAccount() {
-		return savingsAccount;
+	public Account getAccount() {
+		return account;
 	}
     //no setter
 	
