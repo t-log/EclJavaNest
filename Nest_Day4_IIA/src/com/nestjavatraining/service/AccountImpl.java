@@ -73,39 +73,59 @@ public class AccountImpl implements AccountService {
 	}
 
 	@Override
-	public void depositAmount(String accountNumber,double depositAmount,ArrayList<SavingsAccount> accountsList) {
-		boolean existFlag = false;
-		for (SavingsAccount account : accountsList){
-	         if (account.getAccountCode().equals(accountNumber)){
-	        	 account.setAccountBalance(depositAmount);
-	        	 existFlag = true;
-	        	 System.out.println("Amount deposit successfull");
-	         }
+	public void depositAmount(String accountNumber,double depositAmount,ArrayList<Customer> customersList) {
+		boolean presentFlag = false;
+		for(Customer custo:customersList) {
+			if(custo.getAccount().getAccountCode().equals(accountNumber)) {
+				presentFlag = true;
+				if(custo.getAccount() instanceof CurrentAccount) {
+					((CurrentAccount)custo.getAccount()).setAccountBalance(depositAmount);
+					System.out.println("Deposit Successfull");
+				}
+				else if(custo.getAccount() instanceof SavingsAccount) {
+					((SavingsAccount)custo.getAccount()).setAccountBalance(depositAmount);
+					System.out.println("Deposit Successfull");
+				}	 
+			}		
 		}
-		if(!existFlag) {
+		if(!presentFlag) {
 			System.out.println("Invalid Account");
 		}
 
 	}
 
 	@Override
-	public void withdrawAmount(String accountNumber,double withdrawAmount,ArrayList<SavingsAccount> accountsList) {
-		boolean existFlag = false;
-		for (SavingsAccount account : accountsList){
-	         if (account.getAccountCode().equals(accountNumber)){
-	        	 existFlag = true;
-	        	 
-	        	 double currentAccountBalance = account.getAccountBalance();
-	        	 if(currentAccountBalance>withdrawAmount) {
-	        		 account.setAccountBalance(currentAccountBalance-withdrawAmount);
-	        		 System.out.println("Withdrawal successfull");
+	public void withdrawAmount(String accountNumber,double withdrawAmount,ArrayList<Customer> customersList) {
+		boolean presentFlag = false;
+		double currentAccountBalance;
+		for (Customer custo:customersList){
+	         if (custo.getAccount().getAccountCode().equals(accountNumber)){
+	        	 presentFlag = true;
+	        	 if(custo.getAccount() instanceof CurrentAccount) {
+	        		 currentAccountBalance = ((CurrentAccount)custo.getAccount()).getAccountBalance();
+	        		 if(currentAccountBalance>withdrawAmount) {
+	        			 ((CurrentAccount)custo.getAccount()).setAccountBalance(currentAccountBalance-withdrawAmount);
+		        		 System.out.println("Withdrawal successfull");
+		        	 }
+		        	 else {
+		        		 System.out.println("Insufficient Balance!");
+		        	 }
 	        	 }
-	        	 else {
-	        		 System.out.println("Insufficient Balance!");
-	        	 }
-	        	 
+	        	 else if(custo.getAccount() instanceof SavingsAccount) {
+	        		 currentAccountBalance = ((SavingsAccount)custo.getAccount()).getAccountBalance();
+	        		 if(custo.getAccount() instanceof CurrentAccount) {
+		        		 currentAccountBalance = ((CurrentAccount)custo.getAccount()).getAccountBalance();
+		        		 if(currentAccountBalance>withdrawAmount) {
+		        			 ((SavingsAccount)custo.getAccount()).setAccountBalance(currentAccountBalance-withdrawAmount);
+			        		 System.out.println("Withdrawal successfull");
+			        	 }
+			        	 else {
+			        		 System.out.println("Insufficient Balance!");
+			        	 }
+		        	 }
+	        	 }       	 
 	         }
-	         if(!existFlag) {
+	         if(!presentFlag) {
 	        	 System.out.println("Invalid Account");
 	         }
 	         

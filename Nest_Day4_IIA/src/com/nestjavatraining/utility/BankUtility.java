@@ -69,24 +69,23 @@ public class BankUtility {
 //				  System.out.println(customer.getCustomerName()+customer.getAccount());
 				  System.out.println("Account added successfully");
 				  break;
-//			case 2: 
-//				  //Deposit
-//				
-//				  System.out.println("Enter account number:");
-//				  accountNumber = scanner.next().toUpperCase();
-//				  System.out.println("Enter amount to deposit:");
-//				  depositAmount = scanner.nextDouble();
-//				  accountImpl.depositAmount(accountNumber, depositAmount,accountsList);
-//				  
-//				  break;
-//			case 3: 
-//				  //Withdraw
-//				  System.out.println("Enter account number:");
-//				  accountNumber = scanner.next().toUpperCase();
-//				  System.out.println("Enter amount to withdraw:");
-//				  withdrawAmount = scanner.nextDouble();
-//				  accountImpl.withdrawAmount(accountNumber, withdrawAmount,accountsList);
-//				  break;
+			case 2: 
+				  //Deposit
+				
+				  System.out.println("Enter account number:");
+				  accountNumber = scanner.next().toUpperCase();
+				  System.out.println("Enter amount to deposit:");
+				  depositAmount = scanner.nextDouble();
+				  accountImpl.depositAmount(accountNumber, depositAmount,customersList);
+				  break;
+			case 3: 
+				  //Withdraw
+				  System.out.println("Enter account number:");
+				  accountNumber = scanner.next().toUpperCase();
+				  System.out.println("Enter amount to withdraw:");
+				  withdrawAmount = scanner.nextDouble();
+				  accountImpl.withdrawAmount(accountNumber, withdrawAmount,customersList);
+				  break;
 			case 4: 
 				  //Display all accounts
 				  System.out.println("SlNo   CustomerName   AccountCode  AccountType             CreateDate   ExpiryDate     Balance  FreeLimit");
