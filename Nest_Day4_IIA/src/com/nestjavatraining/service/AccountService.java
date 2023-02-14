@@ -8,9 +8,9 @@ import com.nestjavatraining.entity.SavingsAccount;
 
 public interface AccountService {
 	
-	public Account createAccount(int choice);
+	public Account createAccount(int accountChoice,int productChoice);
 	public void depositAmount(String accountNumber,double depositAmount,ArrayList<SavingsAccount> accountsList);
 	public void withdrawAmount(String accountNumber,double withdrawAmount,ArrayList<SavingsAccount> accountsList);
 	
-	public Customer createCustomer(SavingsAccount savingsAccount);
+	public Customer createCustomer(Account account,ArrayList<Customer> customersList);
 }
