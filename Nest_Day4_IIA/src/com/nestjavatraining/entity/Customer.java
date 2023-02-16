@@ -16,7 +16,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return customerName +"       "+ account;
+		return customerName +"       "+ customerCode +"       "+ account;
 	}
 
 	public Customer(String customerCode, String customerName,Account account) {
