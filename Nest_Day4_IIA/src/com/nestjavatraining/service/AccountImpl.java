@@ -56,6 +56,7 @@ public class AccountImpl implements AccountService {
 	public Customer createCustomer(Account account,ArrayList<Customer> customersList,boolean isNew,String customerCode) {
 		
 		String name;
+		boolean existFlag = false;
 		if(isNew) {
 			System.out.println("Enter Name");
 			name = scanner.nextLine();
@@ -71,9 +72,13 @@ public class AccountImpl implements AccountService {
 		else if (isNew == false) {
 			for(Customer custo:customersList) {
 				if(custo.getCustomerCode().equals(customerCode)) {
+					 existFlag = true;
 					 custo.getAccountslist().add(account);
 					 System.out.println("Account added successfully");
 				}	
+			}
+			if(existFlag == false) {
+				System.out.println("Invalid Customer code");
 			}
 		}
 		return null;	
