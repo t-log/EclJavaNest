@@ -13,7 +13,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void deleteProduct(String productCode) {
-		
+		productDao.deleteProduct(productCode);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProduct(String productCode) {
 		
-		return null;
+		return productDao.getProduct(productCode);
 	}
 
 }

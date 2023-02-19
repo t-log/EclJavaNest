@@ -37,14 +37,27 @@ public class ProductUtility {
 		}while (ch == 'y');
 	}
 	
-	private static void searchProduct() {  }
+	private static void searchProduct() { 
+		System.out.println("Enter Prouct Code:");
+		Scanner scanner = new Scanner(System.in);
+		String productCode = scanner.nextLine();
+		System.out.println(productService.getProduct(productCode));
+		
+	}
 	private static void listAllProducts() {
 		List<Product> productList = productService.listAllProducts(); 
 		System.out.println("Product Code " + " " + "Product Name"+ " " +"Product Description" + " "+ "Activation Date"); 
 		for(Product product : productList) 
 			System.out.println(product.getProductCode() + " " + product.getProductName()+ " " +product.getProductDescription() + " "+ product.getActivationDate());
 			}
-	private static void deleteProduct() {}
+	private static void deleteProduct() {
+		
+		System.out.println("Enter Product Code:");
+		Scanner scanner = new Scanner(System.in);
+		String productCode = scanner.nextLine();
+		productService.deleteProduct(productCode);
+		
+	}
 	private static void saveProduct() throws ParseException {
 		
 		Scanner scanner = new Scanner(System.in);
@@ -55,7 +68,9 @@ public class ProductUtility {
 		System.out.println("Enter product description:");
 		String productDescription = scanner.nextLine();
 		System.out.println("Enter product activation date:");
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
 		String activDate = scanner.nextLine();
 		Date activationDate = formatter.parse(activDate);
 		System.out.println("Enter expiry date:");

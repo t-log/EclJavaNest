@@ -14,6 +14,8 @@ import com.nestjavatraining.connectionpool.ConnectionPool;
 import com.nestjavatraining.entity.Product;
 
 public class ProductDaoImpl implements ProductDao {
+	
+	
 
 	@Override
 	public void saveProduct(Product product) {
@@ -35,9 +37,7 @@ public class ProductDaoImpl implements ProductDao {
 			
 			System.out.println(prepStmt.executeUpdate()+" records inserted"); 
 			
-			connection.close();
-			
-			
+			connection.close();	
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -72,11 +72,49 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public Product getProduct(String productCode) {
 		
+		Product product = null;
+		Connection connection = null; 
+		String selectSQL = "Select * from product where productcode = ?"; 
+		PreparedStatement prepStmt = null;
+		try {
+			DataSource ds = ConnectionPool.getDataSource();
+			connection = ds.getConnection(); 
+			prepStmt = connection.prepareStatement(selectSQL); 
+			prepStmt.setString(1, productCode);
+			ResultSet resultSet = prepStmt.executeQuery();
+			while(resultSet.next()) {
+				product = new Product(resultSet.getString(2), resultSet.getString(3),resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6));
+			connection.close();
+//			  	System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2)+ " " + resultSet.getString(3)
+//			  	+ " " + resultSet.getString(4)+ " " + resultSet.getString(5) + " " + resultSet.getString(6)); 
+			}
+			return product;
+			
+			}
+		catch (SQLException e) {
+			e.printStackTrace(); 
+		}
 		return null;
+		
 	}
 
 	@Override
 	public void deleteProduct(String productCode) {
+		Connection connection = null; 
+		String deleteSQL = "delete from product where productcode = ?"; 
+		PreparedStatement prepStmt = null;
+		try {
+			DataSource ds = ConnectionPool.getDataSource();
+			connection = ds.getConnection(); 
+			prepStmt = connection.prepareStatement(deleteSQL); 
+			prepStmt.setString(1, productCode);
+			System.out.println(prepStmt.executeUpdate()+" records deleted");
+			
+			connection.close();
+			}
+		catch (SQLException e) {
+			e.printStackTrace(); 
+		}
 		
 
 	}
