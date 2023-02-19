@@ -1,5 +1,8 @@
 package com.nestjavatraining.utility;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +14,7 @@ public class ProductUtility {
 	
 	private static ProductService productService = new ProductServiceImpl();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		
 		char ch; 
 		Scanner scanner = new Scanner(System.in); 
@@ -42,6 +45,26 @@ public class ProductUtility {
 			System.out.println(product.getProductCode() + " " + product.getProductName()+ " " +product.getProductDescription() + " "+ product.getActivationDate());
 			}
 	private static void deleteProduct() {}
-	private static void saveProduct() {}
+	private static void saveProduct() throws ParseException {
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter product code:");
+		String productCode = scanner.nextLine();
+		System.out.println("Enter product name:");
+		String productName = scanner.nextLine();
+		System.out.println("Enter product description:");
+		String productDescription = scanner.nextLine();
+		System.out.println("Enter product activation date:");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String activDate = scanner.nextLine();
+		Date activationDate = formatter.parse(activDate);
+		System.out.println("Enter expiry date:");
+		String expDate = scanner.nextLine();
+		Date expiryDate = formatter.parse(expDate);
+		Product product = new Product(productCode,productName,productDescription,activationDate,expiryDate);
+		
+		productService.saveProduct(product);
+		
+	}
 
 }

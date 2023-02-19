@@ -1,6 +1,7 @@
 package com.nestjavatraining.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,30 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public void saveProduct(Product product) {
 		
+		Connection connection = null;
+		String insertSQL = "Insert into product(productcode,productname,productdescription,"
+							+ "activationdate,expirydate) values(?,?,?,?,?)";
+		PreparedStatement prepStmt = null;
+		
+		try {
+			DataSource ds = ConnectionPool.getDataSource();
+			connection = ds.getConnection();
+			prepStmt = connection.prepareStatement(insertSQL);
+			prepStmt.setString(1,product.getProductCode());
+			prepStmt.setString(2, product.getProductName());
+			prepStmt.setString(3, product.getProductDescription());
+			prepStmt.setDate(4, new java.sql.Date(product.getActivationDate().getTime()));
+			prepStmt.setDate(5, new java.sql.Date(product.getExpiryDate().getTime()));
+			
+			System.out.println(prepStmt.executeUpdate()+" records inserted"); 
+			
+			connection.close();
+			
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 
