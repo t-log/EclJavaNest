@@ -5,13 +5,6 @@ public class Customer implements Comparable<Customer> {
 	private int age;
 	private String name;
 	
-	
-	
-	@Override
-	public String toString() {
-		return "Customer [age=" + age + ", name=" + name + "]";
-	}
-
 	public Customer(int age, String name) {
 		this.age = age;
 		this.name = name;
