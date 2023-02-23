@@ -16,5 +16,13 @@
     		class="com.nestjavatraining.springfoundation.HockeyCoach">
     </bean>
     
+    <bean id="baseballCoach"
+    		class="com.nestjavatraining.springfoundation.BaseballCoach">
+    </bean>
+    
+    <bean id="cricketCoach"
+    		class="com.nestjavatraining.springfoundation.CricketCoach">
+    </bean>
+    
    
 </beans>
