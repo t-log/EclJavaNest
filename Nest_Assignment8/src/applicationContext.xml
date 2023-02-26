@@ -14,11 +14,6 @@
     
     <!-- Define your beans here --> 
     
-     <!-- <bean id="accountService"
-    		class="com.nestjavatraining.service.Service">
-    </bean> --> 
-    
-    
 	<bean id="atmWithdrawal"
 			class="com.nestjavatraining.utility.ATMWithdrawal">		
 	</bean>
