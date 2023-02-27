@@ -18,7 +18,6 @@ public class AccountApp {
 		//load the spring configuration file
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		Boolean flag = true;
 		double amount = 0;
 		int choice;
 		
@@ -63,7 +62,7 @@ public class AccountApp {
 				  	System.out.println(service.getAccountService(account,amount));
 					break;	
 			  case 5:
-				  	flag = false;
+				  	context.close();
 				  	break;
 			  default:
 				  	System.out.println("Invalid Option");
