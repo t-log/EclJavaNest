@@ -1,13 +1,14 @@
 package com.nestjavatraining.utility;
 
+import com.nestjavatraining.entity.Account;
 import com.nestjavatraining.service.Service;
 
 public class CheckDeposit implements Service {
 
 	@Override
-	public String getAccountService() {
+	public String getAccountService(Account account,double amount) {
 		
-		return "Check Deposit Service";
+		return account.getBalance()+"";
 	}
 
 }

@@ -1,13 +1,16 @@
 package com.nestjavatraining.utility;
 
+import com.nestjavatraining.entity.Account;
 import com.nestjavatraining.service.Service;
 
 public class CashDeposit implements Service {
 
 	@Override
-	public String getAccountService() {
+	public String getAccountService(Account account,double amount) {
 		
-		return "Cash Deposit Service";
+		account.setBalance(account.getBalance()+amount);
+		
+		return "Deposit Successfull!";
 	}
 
 }

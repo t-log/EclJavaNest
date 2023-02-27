@@ -1,13 +1,20 @@
 package com.nestjavatraining.utility;
 
+import com.nestjavatraining.entity.Account;
 import com.nestjavatraining.service.Service;
 
 public class CashWithdrawal implements Service {
 
 	@Override
-	public String getAccountService() {
+	public String getAccountService(Account account,double amount) {
 		
-		return "Cash Withdrawal Service";
+		if(account.getBalance()>amount) {
+			account.setBalance(account.getBalance()-amount);
+			return "Cash Withdrawal Successfull!";
+		}
+		else {
+			return "Insufficient Balance!";
+		}
 	}
 
 }
