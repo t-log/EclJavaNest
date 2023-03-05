@@ -30,7 +30,7 @@ public class ProductController {
 			// get products from the service
 			List products = (List) productService.displayAllProducts();
 					
-			// add the customers to the model
+			// add the products to the model
 			theModel.addAttribute("products", products);
 			
 			return "list-products";
