@@ -13,10 +13,12 @@ public class AccountApp {
 		
 		Service service;
 		
-		Account account = new Account("ACC100", "Max Savings Account", "Savings Account", 5000);
+//		Account account = new Account("ACC100", "Max Savings Account", "Savings Account", 5000);
 		
 		//load the spring configuration file
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		Account account = context.getBean("account",Account.class);
 		
 		double amount = 0;
 		int choice;

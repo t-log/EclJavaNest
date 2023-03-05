@@ -14,6 +14,14 @@
     
     <!-- Define your beans here --> 
     
+    <bean id="account"
+			class="com.nestjavatraining.entity.Account">
+			<constructor-arg index ="0" value = "ACC100"/>
+			<constructor-arg index ="1" value = "Max Savings Account" />
+			<constructor-arg index ="2" value = "Savings Account" />	
+			<constructor-arg index ="3" value = "0.0"/>				
+	</bean>
+    
 	<bean id="atmWithdrawal"
 			class="com.nestjavatraining.utility.ATMWithdrawal">		
 	</bean>
